@@ -119,5 +119,31 @@ function ui.btn_accept_preferences:on_clicked()
   ui.entry_games.text = ui.entry_games.text
 end
 
+function show_chooser()
+  ui.preferences_chooser:run()
+  ui.preferences_chooser:hide()
+end
+
+function ui.btn_chooser_close:on_clicked()
+  ui.preferences_chooser:hide()
+end
+
+function ui.btn_preferences_core:on_clicked()
+  show_chooser()
+end
+
+function ui.btn_preferences_config:on_clicked()
+  show_chooser()
+end
+
+function ui.btn_preferences_plugins:on_clicked()
+  show_chooser()
+end
+
+function ui.btn_preferences_roms:on_clicked()
+  show_chooser()
+end
+
+
 ui.main_window:show_all()
 Gtk.main()
