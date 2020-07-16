@@ -31,7 +31,7 @@ function get_roms()
   selection.mode = 'SINGLE'
    local rom, iter = selection:get_selected()
    if rom and iter then
-      roms_select = rom:get_value(iter, 1):get_string()
+      roms_select = rom:get_value(iter, 0):get_string()
    end
    return roms_select
 end
@@ -51,7 +51,7 @@ function ui.btn_play:on_clicked()
 		print('Seleccione un rom de la lista')
 	else
 		roms_game = run_game(roms)
-    os.execute("mupen64plus" .. roms_game )
+		os.execute("mupen64plus " .. get_roms() )
 	end
 end
 
