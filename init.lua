@@ -6,7 +6,7 @@
 --[[--
  @package   Mupen64plus+UI
  @filename  init.lua
- @version   1.0
+ @version   1.1
  @autor     Diaz Urbaneja Victor Diego Alejandro <sodomon2@gmail.com>
  @date      15:40:38 -04 2019
 ]]

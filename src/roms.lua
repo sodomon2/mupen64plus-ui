@@ -1,7 +1,7 @@
 --[[--
  @package   Mupen64plus+UI
  @filename  roms.lua
- @version   1.0
+ @version   1.1
  @autor     Diaz Urbaneja Victor Diego Alejandro <sodomon2@gmail.com>
  @date      16.07.2020 18:56:22 -04
 ]]
