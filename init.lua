@@ -12,17 +12,18 @@
 ]]
 
 
-local lgi       = require('lgi')            -- requiero esta libreria que me permitira usar GTK
+lgi       = require('lgi')            -- requiero esta libreria que me permitira usar GTK
+GObject   = lgi.GObject               -- parte de lgi
+GLib      = lgi.GLib                  -- para el treeview
+Gtk       = lgi.require('Gtk', '3.0') -- el objeto GTK
 
-local GObject   = lgi.GObject               -- parte de lgi
-local GLib      = lgi.GLib                  -- para el treeview
-local Gtk       = lgi.require('Gtk', '3.0') -- el objeto GTK
-
-local assert    = lgi.assert
-local builder   = Gtk.Builder()
+assert    = lgi.assert
+builder   = Gtk.Builder()
 
 assert(builder:add_from_file('vistas/mupen64plus+ui.ui'),"error al cargar el archivo") -- hago un debugger, si este archivo existe (true) enlaso el archivo ejemplo.ui, si no existe (false) imprimo un error
-local ui = builder.objects
+ui = builder.objects
+
+require('src.chooser')
 
 local roms_select = nil
 
@@ -116,34 +117,7 @@ end
 function ui.btn_accept_preferences:on_clicked()
 	roms_view()
   ui.window_preferences:hide()
-  ui.entry_games.text = ui.entry_games.text
 end
-
-function show_chooser()
-  ui.preferences_chooser:run()
-  ui.preferences_chooser:hide()
-end
-
-function ui.btn_chooser_close:on_clicked()
-  ui.preferences_chooser:hide()
-end
-
-function ui.btn_preferences_core:on_clicked()
-  show_chooser()
-end
-
-function ui.btn_preferences_config:on_clicked()
-  show_chooser()
-end
-
-function ui.btn_preferences_plugins:on_clicked()
-  show_chooser()
-end
-
-function ui.btn_preferences_roms:on_clicked()
-  show_chooser()
-end
-
 
 ui.main_window:show_all()
 Gtk.main()
