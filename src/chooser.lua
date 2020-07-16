@@ -1,7 +1,7 @@
 --[[--
  @package   Mupen64plus+UI
  @filename  chooser.lua
- @version   1.0
+ @version   1.1
  @autor     Diaz Urbaneja Victor Diego Alejandro <sodomon2@gmail.com>
  @date      16.07.2020 18:44:48 -04
 ]]
@@ -67,3 +67,17 @@ function ui.btn_chooser_roms_open:on_clicked()
   ui.chooser_roms:hide()
 end 
 
+function ui.menu_file_open:on_button_press_event()
+  ui.chooser_game:run()
+  ui.chooser_game:hide()
+end
+
+function ui.btn_chooser_game_close:on_clicked()
+  ui.chooser_game:hide()
+end
+
+function ui.btn_chooser_game_open:on_clicked()
+  game = ui.chooser_game:get_filename(chooser)
+  os.execute("mupen64plus " .. game)
+  ui.chooser_game:hide()
+end
