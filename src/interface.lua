@@ -1,5 +1,5 @@
 --[[--
- @package   
+ @package   Mupen64plus+UI
  @filename  inteface.lua
  @version   1.0
  @autor     Diaz Urbaneja Victor Diego Alejandro <sodomon2@gmail.com>
