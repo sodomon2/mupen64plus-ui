@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkAboutDialog" id="about_window">
@@ -521,7 +521,7 @@ That's all there is to it!
 diazvictor
 diexdiaz</property>
     <property name="logo">../img/mupen64plus+ui.svg</property>
-    <child>
+    <child type="titlebar">
       <placeholder/>
     </child>
     <child internal-child="vbox">
@@ -549,11 +549,11 @@ diexdiaz</property>
   <object class="GtkListStore" id="list_roms">
     <columns>
       <!-- column-name Roms -->
-      <column type="gboolean"/>
+      <column type="gchararray"/>
     </columns>
     <data>
       <row>
-        <col id="0">False</col>
+        <col id="0" translatable="yes"/>
       </row>
     </data>
   </object>
@@ -666,6 +666,7 @@ diexdiaz</property>
                 <property name="margin_right">5</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
+                <property name="relief">none</property>
                 <signal name="clicked" handler="on_clicked" swapped="no"/>
                 <child>
                   <object class="GtkImage">
@@ -690,6 +691,7 @@ diexdiaz</property>
                 <property name="margin_right">5</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
+                <property name="relief">none</property>
                 <signal name="clicked" handler="on_clicked" swapped="no"/>
                 <child>
                   <object class="GtkImage">
@@ -714,6 +716,7 @@ diexdiaz</property>
                 <property name="margin_right">5</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
+                <property name="relief">none</property>
                 <signal name="clicked" handler="on_clicked" swapped="no"/>
                 <child>
                   <object class="GtkImage">
@@ -730,30 +733,6 @@ diexdiaz</property>
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="btn_save">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="margin_left">5</property>
-                <property name="margin_right">5</property>
-                <property name="margin_top">5</property>
-                <property name="margin_bottom">5</property>
-                <signal name="clicked" handler="on_clicked" swapped="no"/>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="stock">gtk-save</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">3</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkLabel" id="time">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -761,6 +740,7 @@ diexdiaz</property>
                 <property name="margin_right">5</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
+                <property name="label" translatable="yes">15:22</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -776,17 +756,30 @@ diexdiaz</property>
           </packing>
         </child>
         <child>
-          <object class="GtkTreeView" id="tree_roms">
+          <object class="GtkScrolledWindow">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="model">list_roms</property>
-            <property name="search_column">0</property>
-            <child internal-child="selection">
-              <object class="GtkTreeSelection"/>
-            </child>
+            <property name="shadow_type">in</property>
             <child>
-              <object class="GtkTreeViewColumn" id="roms">
-                <property name="title" translatable="yes">Roms</property>
+              <object class="GtkTreeView" id="tree_roms">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="model">list_roms</property>
+                <property name="search_column">0</property>
+                <child internal-child="selection">
+                  <object class="GtkTreeSelection"/>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="roms">
+                    <property name="title" translatable="yes">Roms</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="tree_rom"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
@@ -915,7 +908,7 @@ diexdiaz</property>
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="btn_acept_preferences">
+              <object class="GtkButton" id="btn_accept_preferences">
                 <property name="label" translatable="yes">Aceptar</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
