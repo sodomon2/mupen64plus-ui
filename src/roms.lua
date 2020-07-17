@@ -20,10 +20,6 @@ function rom_directory(directory)
     return folders
 end
 
-for _, item in pairs(rom_directory("/")) do
-	ui.list_roms:append({ item })
-end
-
 function roms_view()
 	if ( ui.entry_games.text ~= "" ) then
 		ui.list_roms:clear()
